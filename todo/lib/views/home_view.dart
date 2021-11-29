@@ -34,7 +34,7 @@ class HomeView extends StatelessWidget {
                 subtitle: Text('hello Marvin '),
                 trailing: Icon(
                   Icons.favorite,
-                  color: Colors.red.shade200,
+                  color: Colors.red,
                 ),
               );
             },
