@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:todo/views/create_todo_view.dart';
 
+import 'custom_widget/widgets.dart';
+
 void main() {
   runApp(const TasksPage());
 }
@@ -74,14 +76,12 @@ class TasksPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Padding(
+                              const PaddingWithText(
                                 padding: EdgeInsets.all(10),
-                                child: Text('40 tasks',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400,
-                                        color:
-                                            Color.fromRGBO(164, 169, 199, 1))),
+                                fontSize: 11,
+                                text: '40 tasks',
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromRGBO(164, 169, 199, 1),
                               ),
                               const Padding(
                                 padding: EdgeInsets.only(left: 10.0),
