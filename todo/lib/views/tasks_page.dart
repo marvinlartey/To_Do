@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:todo/views/create_todo_view.dart';
 
 void main() {
   runApp(const TasksPage());
@@ -54,97 +55,196 @@ class TasksPage extends StatelessWidget {
                       color: Color.fromRGBO(34, 45, 87, 1))),
             ),
             //TASKS CARDS
-            Row(
-              children: [
-                //CARD 1
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Card(
-                        color: Colors.white,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Text('40 tasks',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromRGBO(164, 169, 199, 1))),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Text('Business',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: LinearPercentIndicator(
-                                width: 100.0,
-                                lineHeight: 3.0,
-                                percent: 0.5,
-                                progressColor: Colors.pink.shade300,
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.width * 0.3),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  //CARD 1
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Card(
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Text('40 tasks',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            Color.fromRGBO(164, 169, 199, 1))),
                               ),
-                            )
-                          ],
+                              const Padding(
+                                padding: EdgeInsets.only(left: 10.0),
+                                child: Text('Business',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: LinearPercentIndicator(
+                                  width: 100.0,
+                                  lineHeight: 3.0,
+                                  percent: 0.5,
+                                  progressColor: Colors.pink.shade300,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                // CARD 2
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Card(
-                        color: Colors.white,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Text('18 tasks',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromRGBO(164, 169, 199, 1))),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 10.0),
-                              child: Text('Personal',
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                              child: LinearPercentIndicator(
-                                width: 100.0,
-                                lineHeight: 3.0,
-                                percent: 0.7,
-                                progressColor: Colors.blue,
+                  // CARD 2
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Card(
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Text('18 tasks',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            Color.fromRGBO(164, 169, 199, 1))),
                               ),
-                            )
-                          ],
+                              const Padding(
+                                padding: EdgeInsets.only(left: 10.0),
+                                child: Text('Personal',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: LinearPercentIndicator(
+                                  width: 100.0,
+                                  lineHeight: 3.0,
+                                  percent: 0.7,
+                                  progressColor: Colors.blue,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                )
-              ],
+
+                  //CARD 3
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Card(
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Text('18 tasks',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            Color.fromRGBO(164, 169, 199, 1))),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 10.0),
+                                child: Text('Personal',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: LinearPercentIndicator(
+                                  width: 100.0,
+                                  lineHeight: 3.0,
+                                  percent: 0.7,
+                                  progressColor: Colors.blue,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  //CARD 4
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.15,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Card(
+                          color: Colors.white,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Text('18 tasks',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color:
+                                            Color.fromRGBO(164, 169, 199, 1))),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 10.0),
+                                child: Text('Personal',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10.0),
+                                child: LinearPercentIndicator(
+                                  width: 100.0,
+                                  lineHeight: 3.0,
+                                  percent: 0.7,
+                                  progressColor: Colors.blue,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
 
             //SUBTITLE
@@ -183,41 +283,18 @@ class TasksPage extends StatelessWidget {
                   },
                   itemCount: 22),
             )
-
-            /* ListView.separated(
-                itemBuilder: ( context, index){
-                  return card(
-                    child: Row(
-                      children: [
-                        Radio(value: '', groupValue: '', onChanged: null, 
-                        activeColor: Colors.pink),
-                        Text('')
-                      ]
-                    )
-                  );
-                },
-      
-                separatorBuilder: (BuildContext context, int){},
-            ) */
-
-            /* Column(
-              children: const [
-                ListTile(
-                  leading: Radio(
-                    value: null,
-                    groupValue: null,
-                    onChanged: null,
-                    toggleable: true,
-                    activeColor: Colors.pink,
-                    focusColor: Colors.pink,
-                  ),
-                  title: Text("Daily meeting with team"),
-                  //trailing: Icon(Icons.favorite),
-                ),
-              ],
-            ) */
           ],
         ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromRGBO(22, 106, 237, 1),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const CreateTodoView(),
+          ));
+        },
+        child: const Icon(Icons.add, size: 28),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/views/home_view.dart';
 import 'package:todo/views/tasks_page.dart';
 import 'package:todo/views/login_page.dart';
+import 'package:todo/views/create_todo_view.dart';
 
 void main() {
   runApp(const MyApp());
