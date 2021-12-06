@@ -9,22 +9,66 @@ void main() {
   runApp(const TasksPage());
 }
 
+final items = List<String>.generate(20, (i) => "Item ${i + 1}");
+
 class TasksPage extends StatelessWidget {
   const TasksPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Container(
+          color: const Color.fromRGBO(14, 31, 85, 1),
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.topRight,
+                margin: const EdgeInsets.fromLTRB(0, 50, 20, 0),
+                child: SizedBox(
+                    height: 70,
+                    width: 70,
+                    child: InkWell(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: const Card(
+                          color: Color.fromRGBO(14, 31, 85, 1),
+                          shape: CircleBorder(
+                              side: BorderSide(width: 1, color: Colors.white)),
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            size: 26,
+                            color: Colors.white,
+                          )),
+                    )),
+              ),
+              SizedBox(
+                child: CircularPercentIndicator(
+                  radius: 130,
+                  progressColor: Colors.pink,
+                  lineWidth: 2,
+                  percent: 0.3,
+                  center: const CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.white,
+                    backgroundImage: AssetImage('assets/images/itachi.jpg'),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       //APPBAR
       appBar: AppBar(
         elevation: 0,
+        iconTheme: const IconThemeData(color: Color.fromRGBO(171, 158, 158, 1)),
         backgroundColor: Colors.white,
-        leading: const IconButton(
+        /* leading: const IconButton(
             onPressed: null,
             icon: Icon(
               Icons.menu,
               size: 26,
-            )),
+            )), */
         actions: const [
           IconButton(onPressed: null, icon: Icon(Icons.search)),
           IconButton(onPressed: null, icon: Icon(Icons.notifications_outlined))
@@ -264,24 +308,28 @@ class TasksPage extends StatelessWidget {
                   BoxConstraints(maxHeight: MediaQuery.of(context).size.height),
               child: ListView.separated(
                   itemBuilder: (context, index) {
-                    return Card(
-                        child: Row(
-                      children: const [
-                        Radio(
-                            value: '',
-                            groupValue: '',
-                            onChanged: null,
-                            activeColor: Colors.pink),
-                        Text('Daily meeting with team')
-                      ],
-                    ));
+                    final item = items[index];
+                    return Dismissible(
+                      key: Key(item),
+                      child: Card(
+                          child: Row(
+                        children: const [
+                          Radio(
+                              value: '',
+                              groupValue: '',
+                              onChanged: null,
+                              activeColor: Colors.pink),
+                          Text('Daily meeting with team')
+                        ],
+                      )),
+                    );
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(
                       height: 5,
                     );
                   },
-                  itemCount: 22),
+                  itemCount: 6),
             )
           ],
         ),

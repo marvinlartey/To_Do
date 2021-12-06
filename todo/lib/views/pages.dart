@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/views/tasks_page.dart';
 
 import 'create_todo_view.dart';
+import 'login_page.dart';
 
 class Pages extends StatelessWidget {
   const Pages({Key? key}) : super(key: key);
@@ -39,6 +40,13 @@ class Pages extends StatelessWidget {
                 ));
               },
               icon: const Icon(Icons.add)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const LogIn(),
+                ));
+              },
+              icon: const Icon(Icons.login)),
         ],
       ),
     );
