@@ -17,6 +17,7 @@ class TasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //DRAWER
       drawer: Drawer(
         child: Container(
           color: const Color.fromRGBO(14, 31, 85, 1),
@@ -52,6 +53,40 @@ class TasksPage extends StatelessWidget {
                     backgroundColor: Colors.white,
                     backgroundImage: AssetImage('assets/images/itachi.jpg'),
                   ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 33),
+                child: Text('Marvin \nLartey',
+                    style: TextStyle(
+                        fontSize: 33,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white)),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(80, 40, 0, 0),
+                child: Column(
+                  children: const [
+                    SizedBox(
+                      height: 0,
+                    ),
+                    RowWithIconAndText(
+                      icon: Icons.bookmark_border_outlined,
+                      text: 'Template',
+                    ),
+                    RowWithIconAndText(
+                      icon: Icons.dashboard_customize_outlined,
+                      text: 'Categories',
+                    ),
+                    RowWithIconAndText(
+                      icon: Icons.pie_chart_outline,
+                      text: 'Analytics',
+                    ),
+                    RowWithIconAndText(
+                      icon: Icons.settings,
+                      text: 'Settings',
+                    ),
+                  ],
                 ),
               )
             ],
@@ -220,7 +255,7 @@ class TasksPage extends StatelessWidget {
                               ),
                               const Padding(
                                 padding: EdgeInsets.only(left: 10.0),
-                                child: Text('Personal',
+                                child: Text('Family',
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -266,7 +301,7 @@ class TasksPage extends StatelessWidget {
                               ),
                               const Padding(
                                 padding: EdgeInsets.only(left: 10.0),
-                                child: Text('Personal',
+                                child: Text('Work',
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
@@ -344,6 +379,39 @@ class TasksPage extends StatelessWidget {
         },
         child: const Icon(Icons.add, size: 28),
       ),
+    );
+  }
+}
+
+class RowWithIconAndText extends StatelessWidget {
+  final IconData? icon;
+  final String text;
+  const RowWithIconAndText({
+    Key? key,
+    required this.icon,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          size: 30,
+          color: Colors.white,
+        ),
+        const SizedBox(
+          width: 25,
+        ),
+        Text(
+          text,
+          style: const TextStyle(color: Colors.white),
+        ),
+        const SizedBox(
+          height: 44,
+        )
+      ],
     );
   }
 }
